@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duhan Designs | Realm of Creativity</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="Screenshot (56).png" alt="Duhan Designs">
+                <span>Duhan Designs</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#templates">Templates</a>
+                <a href="#auth">Join Us</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Realm of <span class="gradient-text">Designs</span></h1>
+            <p>Elevate your visual identity with our premium curated collections.</p>
+            <a href="#templates" class="cta-btn">Explore Collections</a>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section id="templates" class="section">
+        <div class="section-header">
+            <h2>Curated Collections</h2>
+            <p>Discover designs that speak to your audience.</p>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-image">
+                    <img src="cafe.jpg" alt="Cafe">
+                </div>
+                <div class="card-content">
+                    <h3>Cafe Aesthetics</h3>
+                    <p>Warm, inviting designs for coffee shops and bistros.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="poster wall.jpg" alt="Walls">
+                </div>
+                <div class="card-content">
+                    <h3>Urban Walls</h3>
+                    <p>Edgy, street-style poster designs for modern spaces.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="school.jpg" alt="School">
+                </div>
+                <div class="card-content">
+                    <h3>Academic Excellence</h3>
+                    <p>Professional templates for educational institutions.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="festival.jpg" alt="Festival">
+                </div>
+                <div class="card-content">
+                    <h3>Festival Vibes</h3>
+                    <p>Vibrant, energetic designs for events and celebrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auth Section -->
+    <section id="auth" class="section auth-section">
+        <div class="container">
+            <div class="forms-wrapper" id="formsContainer">
+                <!-- Login Form -->
+                <div class="form-box login">
+                    <h2>Welcome Back</h2>
+                    <p>Login to access your dashboard</p>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <input type="email" id="loginEmail" required>
+                            <label>Email Address</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="loginPassword" required>
+                            <label>Password</label>
+                        </div>
+                        <button type="submit" class="btn-primary">Login</button>
+                    </form>
+                    <div class="switch-auth">
+                        <p>Don't have an account? <button onclick="toggleForms()">Sign Up</button></p>
+                    </div>
+                </div>
+
+                <!-- Signup Form -->
+                <div class="form-box signup">
+                    <h2>Create Account</h2>
+                    <p>Join our community of designers</p>
+                    <form id="signupForm">
+                        <div class="input-group">
+                            <input type="text" id="signupName" required>
+                            <label>Full Name</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="signupEmail" required>
+                            <label>Email Address</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="signupPassword" required>
+                            <label>Password</label>
+                        </div>
+                        <button type="submit" class="btn-primary">Sign Up</button>
+                    </form>
+                    <div class="switch-auth">
+                        <p>Already have an account? <button onclick="toggleForms()">Login</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get in Touch <span class="wave">👋</span></h2>
+                <p>We'd love to hear about your project.</p>
+            </div>
+            <form id="contactForm" class="contact-form">
+                <div class="form-row">
+                    <div class="input-group">
+                        <input type="text" id="name" required>
+                        <label>Your Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" required>
+                        <label>Your Email</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <select id="interest" required>
+                            <option value="" disabled selected>Select Interest</option>
+                            <option value="branding">Design & Branding</option>
+                            <option value="web">Web Development</option>
+                            <option value="uiux">UI/UX Design</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id="number" required>
+                        <label>Phone Number</label>
+                    </div>
+                </div>
+                <div class="input-group full-width">
+                    <textarea id="message" required></textarea>
+                    <label>Your Message</label>
+                </div>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Duhan Designs. All rights reserved.</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Form Toggle
+        function toggleForms() {
+            const container = document.getElementById('formsContainer');
+            container.classList.toggle('signup-mode');
+        }
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Form Handlers (Re-attached to new IDs)
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            try {
+                await login(email, password);
+                alert('Login Successful!');
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            try {
+                await signup(name, email, password);
+                alert('Signup Successful! Please login.');
+                toggleForms();
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const interest = document.getElementById('interest').value;
+            const phone = document.getElementById('number').value;
+            const message = document.getElementById('message').value;
+            try {
+                await sendContact(name, email, interest, phone, message);
+                alert('Message Sent Successfully!');
+                e.target.reset();
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+    </script>
+</body>
+
+</html>

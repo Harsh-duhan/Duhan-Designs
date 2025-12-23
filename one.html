@@ -1,0 +1,997 @@
+ <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duhan Designs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #572536 ;
+            overflow-x: hidden;
+        }
+
+        ## Navigation Styles    
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            height: 70px;
+            background-color: #142620;
+            padding: 0 20px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav img {
+            border-radius: 50%;
+            height: 60px;
+            width: 110px;
+            object-fit: cover;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-center a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-center a:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+         .search-section {
+            position: relative;
+            display: inline-block;
+        }
+
+        .search-input {
+            padding-left: 30px;
+            padding: 8px 12px 8px 30px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        ## Mobile Menu Toggle 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        ##   Heading Styles 
+        .heading {
+            display: flex;
+            text-align: centre;
+            justify-content: center;
+            flex-direction: row;
+            margin: 40px 0 20px 40px;
+            color: whitesmoke;
+            font-size: clamp(24px, 6vw, 36px);
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .heading h1 {
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+
+         Slides Container 
+        .slides {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .slide1, .slide2, .slide3, .slide4 {
+            background-color: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .slide1:hover, .slide2:hover, .slide3:hover, .slide4:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .slide1 img, .slide2 img, .slide3 img, .slide4 img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
+            transition: transform 0.4s ease;
+        }
+
+        .slide1:hover img, .slide2:hover img, .slide3:hover img, .slide4:hover img {
+            transform: scale(1.05);
+        }
+
+        .txt1, .txt2, .txt3, .txt4 {
+            text-align: center;
+            font-size: clamp(16px, 3vw, 22px);
+            font-weight: 600;
+            padding: 20px;
+            color: #27738f;
+            background-color: white;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .txt1 h2, .txt2 h2, .txt3 h2, .txt4 h2 {
+            margin: 0;
+            text-transform: capitalize;
+        }
+
+        ##Tablet Styles 
+        @media (max-width: 1024px) {
+            .nav {
+                padding: 0 15px;
+                height: 65px;
+            }
+
+            .nav-center {
+                gap: 20px;
+            }
+
+            .nav-center a {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+
+            .slides {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 25px;
+                padding: 20px 30px;
+            }
+
+            .heading {
+                margin-left: 30px;
+            }
+        }
+
+        ## Mobile Styles 
+        @media (max-width: 768px) {
+            .nav {
+                height: 60px;
+                padding: 0 15px;
+            }
+
+            .nav-center {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background-color: #27738f;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+                gap: 30px;
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-center.active {
+                left: 0;
+            }
+
+            .nav-center a {
+                font-size: 18px;
+                padding: 12px 20px;
+                width: 80%;
+                text-align: center;
+                border: 2px solid transparent;
+            }
+
+            .nav-center a:hover {
+                border-color: white;
+                background-color: rgba(255,255,255,0.1);
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .search-section {
+                width: 50px;
+                margin-right: 160px;
+            }
+            
+            .search-input {
+                padding: 10px 7px 10px 35px;
+            }
+            
+            .search-icon {
+                left: 10px;
+                width: 18px;
+                height: 18px;
+            }
+            .heading {
+                margin: 30px 0 15px 20px;
+                text-align: center;
+            }
+
+            .slides {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 15px 20px;
+            }
+
+            .slide1, .slide2, .slide3, .slide4 {
+                max-width: 100%;
+            }
+
+            .slide1:hover, .slide2:hover, .slide3:hover, .slide4:hover {
+                transform: translateY(-5px) scale(1.01);
+            }
+
+            .slide1 img, .slide2 img, .slide3 img, .slide4 img {
+                height: 200px;
+            }
+
+            .txt1, .txt2, .txt3, .txt4 {
+                padding: 15px;
+            }
+        }
+
+        ## Extra Small Mobile 
+        @media (max-width: 480px) {
+            .nav {
+                height: 55px;
+                padding: 0 10px;
+            }
+
+            .nav img {
+                height: 40px;
+                width: 40px;
+            }
+
+             .search-section {
+                width: 11px;
+                margin-right: 233px;
+            }
+            
+            .search-input {
+                padding: 12px 16px 12px 40px;
+                font-size: 14px;
+            }
+            
+            .search-icon {
+                left: 12px;
+                width: 20px;
+                height: 20px;
+            }
+
+            .heading {
+                margin: 20px 0 10px 15px;
+            }
+
+            .slides {
+                padding: 10px 15px;
+                gap: 15px;
+            }
+
+            .slide1 img, .slide2 img, .slide3 img, .slide4 img {
+                height: 180px;
+            }
+
+            .txt1, .txt2, .txt3, .txt4 {
+                padding: 12px;
+            }
+        }
+
+        ##Large Desktop 
+        @media (min-width: 1200px) {
+            .slides {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 40px;
+                padding: 30px 50px;
+            }
+
+            .slide1 img, .slide2 img, .slide3 img, .slide4 img {
+                height: 280px;
+            }
+        }
+ 
+
+    .slide5 {
+        
+        height: 50vh;
+        margin: 20px 40px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        font-size: clamp(20px, 4vw, 28px);
+        font-weight: bold;
+        /* text-align: right; */
+    }
+   
+     .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #333;
+        }
+
+        .lcontainer {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .form-wrapper {
+            background: white;
+            border-radius: 16px;
+            padding: 60px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-text {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header-text h1 {
+            font-size: 36px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header-text h2 {
+            font-size: 32px;
+            color: #333;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .wave-emoji {
+            font-size: 32px;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-10deg); }
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #333;
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .submit-btn:hover {
+            background: #1f1f1f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .arrow-icon {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .form-wrapper {
+                padding: 40px 30px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .header-text h1, .header-text h2 {
+                font-size: 28px;
+            }
+
+            .container {
+                margin: 40px auto;
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-wrapper {
+                padding: 30px 20px;
+            }
+
+            .header-text h1, .header-text h2 {
+                font-size: 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+        /* ------------------------------------------------------ */
+          .container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 550px;
+            background:  #FFCC00;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .forms-container {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .forms-container.signup-mode {
+            transform: translateX(-50%);
+        }
+
+        .form-section {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .form-content {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-content h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .form-content p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .input-field {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .input-field input:focus {
+            border-color: #667eea;
+        }
+
+        .input-field label {
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            color: #999;
+            pointer-events: none;
+            transition: all 0.3s;
+            background: white;
+            padding: 0 5px;
+        }
+
+        .input-field input:focus + label,
+        .input-field input:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 12px;
+            color: #667eea;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .switch-text {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .switch-text button {
+            background: none;
+            border: none;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+
+        .switch-text button:hover {
+            color: #764ba2;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .social-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #999;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider span {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                height: auto;
+                min-height: 500px;
+            }
+
+            .form-section {
+                padding: 30px 20px;
+            }
+
+            .form-content h2 {
+                font-size: 26px;
+            }
+        }
+
+
+</style>
+<body>
+      <div class="nav">
+        <div class="nav-left">
+            <img src="Screenshot (56).png" alt="logo">
+        </div>
+        
+        <div class="nav-center" id="navCenter">
+            <a href="index">Home</a>
+            <a href="about">About</a>
+            <a href="Templates">Templates</a>
+            <a href="contact">Contact</a>
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+         <div class="search-section">
+        <input type="text" class="search-input" placeholder="Search...">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+        </svg>
+    </div>
+        
+    </div>
+
+    <div class="heading">
+        <h1>Realm of Designs</h1>
+        
+    </div>
+
+    <div class="slides">
+        <div class="slide1">
+            <img src="cafe.jpg" alt="cafe">
+            <div class="txt1">
+                <h2>Cafe</h2>
+            </div>
+        </div>
+        <div class="slide2">
+            <img src="poster wall.jpg" alt="walls">
+            <div class="txt2">
+                <h2>Walls</h2>
+            </div>
+        </div>
+        <div class="slide3">
+            <img src="school.jpg" alt="school">
+            <div class="txt3">
+                <h2>School</h2>
+            </div>
+        </div>
+        <div class="slide4">
+            <img src="festival.jpg" alt="festival">
+            <div class="txt4">
+                <h2>Festival</h2>
+            </div>
+        </div>
+    </div>
+
+       <div class="container">
+        <div class="forms-container" id="formsContainer">
+             ## Login Form 
+            <div class="form-section">
+                <div class="form-content">
+                    <h2>Welcome Back</h2>
+                    <p>Login to continue your journey</p>
+                    
+                    <form>
+                        <div class="input-field">
+                            <input type="email" placeholder=" " required>
+                            <label>Email Address</label>
+                        </div>
+                        
+                        <div class="input-field">
+                            <input type="password" placeholder=" " required>
+                            <label>Password</label>
+                        </div>
+                        
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+
+                    <div class="divider">
+                        <span>or continue with</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button class="social-btn">Google</button>
+                        <button class="social-btn">Facebook</button>
+                    </div>
+                    
+                    <div class="switch-text">
+                        Don't have an account? 
+                        <button type="button" onclick="toggleForms()">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+
+            ## Signup Form 
+            <div class="form-section">
+                <div class="form-content">
+                    <h2>Create Account</h2>
+                    <p>Sign up to get started</p>
+                    
+                    <form>
+                        <div class="input-field">
+                            <input type="text" placeholder=" " required>
+                            <label>Full Name</label>
+                        </div>
+
+                        <div class="input-field">
+                            <input type="email" placeholder=" " required>
+                            <label>Email Address</label>
+                        </div>
+                        
+                        <div class="input-field">
+                            <input type="password" placeholder=" " required>
+                            <label>Password</label>
+                        </div>
+                        
+                        <button type="submit" class="btn">Sign Up</button>
+                    </form>
+
+                    <div class="divider">
+                        <span>or continue with</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button class="social-btn">Google</button>
+                        <button class="social-btn">Facebook</button>
+                    </div>
+                    
+                    <div class="switch-text">
+                        Already have an account? 
+                        <button type="button" onclick="toggleForms()">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <nav class="navbar">
+        <div class="logo">mattered•</div>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#insights">Insights</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="lcontainer">
+        <div class="form-wrapper">
+            <div class="header-text">
+                <h1>Love to hear from you,</h1>
+                <h2>Get in touch <span class="wave-emoji">👋</span></h2>
+            </div>
+
+            <form id="contactForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Your name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your mail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest">What you are interested</label>
+                        <select id="interest" name="interest" required>
+                            <option value="">Select</option>  
+                            <option value="">Design & Branding</option>
+                            <option value="walls">Walls posters</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="menu">Menu templates</option>
+                            <option value="ui-ux">UI/UX Design</option>
+                            <option value="Festival">Festival Templates</option>
+                            <option value="school posters">School Posters</option>
+                        </select>
+                    </div>
+                   
+                    
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                         <!-- <label for="number"></label> 
+                        <input type="number" id="number" name="phone" placeholder="Enter your number" required>
+                       
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Let tell us know your project about..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Just Send
+                    <svg class="arrow-icon" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+   
+    </div>
+    <script>
+    
+        function toggleForms() {
+            const container = document.getElementById('formsContainer');
+            container.classList.toggle('signup-mode');
+        }
+    
+    </script>
+    </body>
+    </html> -->
+
+
+
+     <!-- <select id="budget" name="budget" required>
+                            <option value="">Select your budget</option>
+                            <option value="5k-10k">$5k - $10k</option>
+                            <option value="10k-25k">$10k - $25k</option>
+                            <option value="25k-50k">$25k - $50k</option>
+                            <option value="50k-100k">₹50 - $100</option>
+                            <option value="100">₹100+</option>
+                        </select> -->
+
+
+     <!-- <div class="footer">
+        <p>© 2024 Duhan Designs. All rights reserved.</p> -->

@@ -1,0 +1,14 @@
+venv/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+.idea/
+.vscode/
+*.log
+backend/venv/
+backend/__pycache__/
+backend/.env
+one.html/
+practice.html/
+pro.html/
