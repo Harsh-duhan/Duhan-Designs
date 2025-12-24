@@ -198,6 +198,13 @@
         </div>
     </div>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox-modal">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-img" id="lightboxImg">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
     <footer>
         <p>&copy; 2024 Duhan Designs. All rights reserved.</p>
     </footer>
@@ -206,22 +213,20 @@
     <script>
         // Design Assets Data
         const cafeDesigns = [
-            // { type: 'img', src: 'Assests/menu designs/Untitled design.png', title: 'Modern Cafe Menu' },
-            // { type: 'img', src: 'Assests/menu designs/design 1.jpg', title: 'Classic Coffee' },
-            { type: 'pdf', src: 'Assests/menudesigns/design2.jpg', title: 'Design Layout 2' },
-            { type: 'pdf', src: 'Assests/menu designs/design 3.jpg', title: 'Design Layout 3' },
-            { type: 'pdf', src: 'Assests/menu designs/design 4.jpg', title: 'Design Layout 4' },
-            { type: 'pdf', src: 'Assests/menu designs/design 5.jpg', title: 'Design Layout 5' },
-            { type: 'pdf', src: 'Assests/menu designs/design 6.jpg', title: 'Design Layout 6' },
-            { type: 'pdf', src: 'Assests/menu designs/design 7.jpg', title: 'Design Layout 7' },
-            { type: 'pdf', src: 'Assests/menu designs/design 8.jpg', title: 'Design Layout 8' },
-            { type: 'pdf', src: 'Assests/menu designs/design 9.jpg', title: 'Design Layout 9' },
-            { type: 'pdf', src: 'Assests/menu designs/design 10.jpg', title: 'Design Layout 10' },
-            { type: 'pdf', src: 'Assests/menu designs/design 11.jpg', title: 'Design Layout 11' },
-            { type: 'pdf', src: 'Assests/menu designs/design 12.jpg', title: 'Design Layout 12' },
-            { type: 'pdf', src: 'Assests/menu designs/design 13.jpg', title: 'Design Layout 13' },
-            { type: 'pdf', src: 'Assests/menu designs/design 14.jpg', title: 'Design Layout 14' },
-            { type: 'pdf', src: 'Assests/menu designs/design 15.jpg', title: 'Design Layout 15' },
+            { type: 'img', src: 'Assests/menu designs/design 2.jpg', title: 'Design Layout 1' },
+            { type: 'img', src: 'Assests/menu designs/design 3.jpg', title: 'Design Layout 2' },
+            { type: 'img', src: 'Assests/menu designs/design 4.jpg', title: 'Design Layout 3' },
+            { type: 'img', src: 'Assests/menu designs/design 5.jpg', title: 'Design Layout 4' },
+            { type: 'img', src: 'Assests/menu designs/design 6.jpg', title: 'Design Layout 5' },
+            { type: 'img', src: 'Assests/menu designs/design 7.jpg', title: 'Design Layout 6' },
+            { type: 'img', src: 'Assests/menu designs/design 8.jpg', title: 'Design Layout 7' },
+            { type: 'img', src: 'Assests/menu designs/design 9.jpg', title: 'Design Layout 8' },
+            { type: 'img', src: 'Assests/menu designs/design 10.jpg', title: 'Design Layout 9' },
+            { type: 'img', src: 'Assests/menu designs/design 11.jpg', title: 'Design Layout 10' },
+            { type: 'img', src: 'Assests/menu designs/design 12.jpg', title: 'Design Layout 11' },
+            { type: 'img', src: 'Assests/menu designs/design 13.jpg', title: 'Design Layout 12' },
+            { type: 'img', src: 'Assests/menu designs/design 14.jpg', title: 'Design Layout 13' },
+            { type: 'img', src: 'Assests/menu designs/design 15.jpg', title: 'Design Layout 14' },
         ];
 
         // Mobile Menu Toggle
@@ -265,8 +270,9 @@
                 }
 
                 item.innerHTML = `
-                    <div class="design-preview">
+                    <div class="design-preview" onclick="showLightbox('${design.src}', '${design.title}')">
                         ${content}
+                        <div class="design-title-overlay">${design.title}</div>
                     </div>
                 `;
                 modalGrid.appendChild(item);
@@ -291,6 +297,26 @@
         // Ideally we attach it here if the ID existed, but I'll add the onclick in the HTML body replacement.
         document.getElementById('cafeCard').addEventListener('click', openCafeModal);
 
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+
+        function showLightbox(src, title) {
+            lightboxImg.src = src;
+            lightboxCaption.textContent = title;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        // Close Lightbox on outside click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
 
         // Smooth Scroll for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
