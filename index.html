@@ -48,9 +48,12 @@
             <p>Discover designs that speak to your audience.</p>
         </div>
         <div class="grid-container">
-            <div class="card">
+            <div class="card" id="cafeCard">
                 <div class="card-image">
-                    <img src="cafe.jpg" alt="Cafe">
+                    <img src="Assests/cafe.jpg" alt="Cafe">
+                    <div class="card-overlay">
+                        <span>View Designs</span>
+                    </div>
                 </div>
                 <div class="card-content">
                     <h3>Cafe Aesthetics</h3>
@@ -59,7 +62,7 @@
             </div>
             <div class="card">
                 <div class="card-image">
-                    <img src="poster wall.jpg" alt="Walls">
+                    <img src="Assests/poster wall.jpg" alt="Walls">
                 </div>
                 <div class="card-content">
                     <h3>Urban Walls</h3>
@@ -68,7 +71,7 @@
             </div>
             <div class="card">
                 <div class="card-image">
-                    <img src="school.jpg" alt="School">
+                    <img src="Assests/school.jpg" alt="School">
                 </div>
                 <div class="card-content">
                     <h3>Academic Excellence</h3>
@@ -77,7 +80,7 @@
             </div>
             <div class="card">
                 <div class="card-image">
-                    <img src="festival.jpg" alt="Festival">
+                    <img src="Assests/festival.jpg" alt="Festival">
                 </div>
                 <div class="card-content">
                     <h3>Festival Vibes</h3>
@@ -180,12 +183,47 @@
         </div>
     </section>
 
+
+    <!-- Design Modal -->
+    <div id="designModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCafeModal()">&times;</span>
+            <div class="modal-header">
+                <h2>Cafe Aesthetics Collection</h2>
+                <p>Browse our exclusive menu and poster designs</p>
+            </div>
+            <div class="modal-grid" id="modalGrid">
+                <!-- Designs injected here via JS -->
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 Duhan Designs. All rights reserved.</p>
     </footer>
 
     <script src="js/api.js"></script>
     <script>
+        // Design Assets Data
+        const cafeDesigns = [
+            // { type: 'img', src: 'Assests/menu designs/Untitled design.png', title: 'Modern Cafe Menu' },
+            // { type: 'img', src: 'Assests/menu designs/design 1.jpg', title: 'Classic Coffee' },
+            { type: 'pdf', src: 'Assests/menudesigns/design2.jpg', title: 'Design Layout 2' },
+            { type: 'pdf', src: 'Assests/menu designs/design 3.jpg', title: 'Design Layout 3' },
+            { type: 'pdf', src: 'Assests/menu designs/design 4.jpg', title: 'Design Layout 4' },
+            { type: 'pdf', src: 'Assests/menu designs/design 5.jpg', title: 'Design Layout 5' },
+            { type: 'pdf', src: 'Assests/menu designs/design 6.jpg', title: 'Design Layout 6' },
+            { type: 'pdf', src: 'Assests/menu designs/design 7.jpg', title: 'Design Layout 7' },
+            { type: 'pdf', src: 'Assests/menu designs/design 8.jpg', title: 'Design Layout 8' },
+            { type: 'pdf', src: 'Assests/menu designs/design 9.jpg', title: 'Design Layout 9' },
+            { type: 'pdf', src: 'Assests/menu designs/design 10.jpg', title: 'Design Layout 10' },
+            { type: 'pdf', src: 'Assests/menu designs/design 11.jpg', title: 'Design Layout 11' },
+            { type: 'pdf', src: 'Assests/menu designs/design 12.jpg', title: 'Design Layout 12' },
+            { type: 'pdf', src: 'Assests/menu designs/design 13.jpg', title: 'Design Layout 13' },
+            { type: 'pdf', src: 'Assests/menu designs/design 14.jpg', title: 'Design Layout 14' },
+            { type: 'pdf', src: 'Assests/menu designs/design 15.jpg', title: 'Design Layout 15' },
+        ];
+
         // Mobile Menu Toggle
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
@@ -200,6 +238,59 @@
             const container = document.getElementById('formsContainer');
             container.classList.toggle('signup-mode');
         }
+
+        // Modal Logic
+        const modal = document.getElementById('designModal');
+        const modalGrid = document.getElementById('modalGrid');
+
+        function openCafeModal() {
+            modalGrid.innerHTML = ''; // Clear previous content
+
+            cafeDesigns.forEach((design, index) => {
+                const item = document.createElement('div');
+                item.className = 'design-item';
+                item.style.animationDelay = `${index * 0.05}s`;
+
+                let content = '';
+                if (design.type === 'img') {
+                    content = `<img src="${design.src}" alt="${design.title}" loading="lazy">`;
+                } else {
+                    content = `
+                        <div class="pdf-preview">
+                            <span class="file-icon">📄</span>
+                            <span>${design.title}</span>
+                            <a href="${design.src}" target="_blank" class="preview-btn">View PDF</a>
+                        </div>
+                    `;
+                }
+
+                item.innerHTML = `
+                    <div class="design-preview">
+                        ${content}
+                    </div>
+                `;
+                modalGrid.appendChild(item);
+            });
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeCafeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeCafeModal();
+        });
+
+        // Specific Event Listener for Cafe Card
+        // Note: I added 'onclick="openCafeModal()"' to the HTML element directly in the previous step (or will do now via replacement)
+        // Ideally we attach it here if the ID existed, but I'll add the onclick in the HTML body replacement.
+        document.getElementById('cafeCard').addEventListener('click', openCafeModal);
+
 
         // Smooth Scroll for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
